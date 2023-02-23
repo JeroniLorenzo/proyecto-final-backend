@@ -34,7 +34,7 @@ UsersController.newUser = async (req, res) => {
             adress: req.body.adress,
             password: password,
             phone: req.body.phone,
-            role: req.body.role,
+            roleId: req.body.roleId,
             
         })
 
@@ -57,7 +57,7 @@ UsersController.updateUser = async (req, res) => {
     let newAdress = req.body.adress;
     let newPassword = req.body.password;
     let newPhone = req.body.phone;
-    let newRole = req.body.role;
+    let newRoleId = req.body.roleId;
 
 
     try {
@@ -72,7 +72,7 @@ UsersController.updateUser = async (req, res) => {
                 adress: newAdress,
                 password: newPassword,
                 phone: newPhone,
-                role: newRole,
+                roleId: newRoleId,
             }).setOptions({ returnDocument: 'after' })
 
         if (updated) {
@@ -118,7 +118,7 @@ UsersController.loginUser = async (req, res) => {
                
                 if (bcrypt.compareSync(req.body.password, userFound[0].password)) {
                     console.log(userFound[0])
-                    let token = jsonwebtoken.sign( {id:userFound[0]._id, role:userFound[0].role } , SECRET, {
+                    let token = jsonwebtoken.sign( {id:userFound[0]._id, roleId:userFound[0].roleId } , SECRET, {
                         expiresIn: EXPIRES
                     });
 

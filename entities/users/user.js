@@ -26,7 +26,7 @@ const userSchema = new Schema({
     phone: {
         type: Number
     },
-    role:{
+    roleId:{
         type: Schema.ObjectId, ref: "Role"
     }
 
