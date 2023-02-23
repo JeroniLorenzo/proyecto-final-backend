@@ -4,6 +4,7 @@ const router = express.Router();
 
 const isAdmin = require('../../middlewares/isAdmin');
 
+const UsersController = require('./UsersController')
 
 router.get('/getAll', isAdmin, UsersController.getAllUsers);
 router.post("/newUser", UsersController.newUser);
