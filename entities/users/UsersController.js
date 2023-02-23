@@ -1,7 +1,7 @@
 const User = require('./user');
 const bcrypt = require('bcrypt');
 const jsonwebtoken = require('jsonwebtoken');
-const {SECRET, EXPIRES} = require('../../config/auth');
+const {SECRET, EXPIRES, ROUNDS} = require('../../config/auth');
 const UsersController = {};
 
 UsersController.getAllUsers = async (req, res) => {
@@ -23,7 +23,7 @@ UsersController.getAllUsers = async (req, res) => {
 
 UsersController.newUser = async (req, res) => {
 
-    let password = bcrypt.hashSync(req.body.password, Number.parseInt(authConfig.ROUNDS));
+    let password = bcrypt.hashSync(req.body.password, Number.parseInt(ROUNDS));
 
     try {
 
@@ -31,6 +31,7 @@ UsersController.newUser = async (req, res) => {
             name: req.body.name,
             surname: req.body.surname,
             email: req.body.email,
+            adress: req.body.adress,
             password: password,
             phone: req.body.phone,
             role: req.body.role,
@@ -53,10 +54,11 @@ UsersController.updateUser = async (req, res) => {
     let newName = req.body.name;
     let newSurname = req.body.surname;
     let newEmail = req.body.email;
+    let newAdress = req.body.adress;
     let newPassword = req.body.password;
     let newPhone = req.body.phone;
     let newRole = req.body.role;
-    let newNickname = req.body.nickname;
+
 
     try {
         let updated = await User.findOneAndUpdate(
@@ -67,10 +69,10 @@ UsersController.updateUser = async (req, res) => {
                 name: newName,
                 surname: newSurname,
                 email: newEmail,
+                adress: newAdress,
                 password: newPassword,
                 phone: newPhone,
                 role: newRole,
-                nickname: newNickname
             }).setOptions({ returnDocument: 'after' })
 
         if (updated) {
