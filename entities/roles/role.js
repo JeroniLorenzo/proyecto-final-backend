@@ -7,24 +7,21 @@ const roleSchema = new Schema({
     type: String,
     required: true,
     unique: true
-},
-  permissions: [{
-    type: String
-}],
+}
 });
 
 // Definir el modelo de roles
 const Role = mongoose.model('Role', roleSchema);
-
+module.exports = Role;
 // Crear los roles de administrador y usuario
 const adminRole = new Role({
   name: 'admin',
-  permissions: ['create', 'read', 'update', 'delete'],
+
 });
 
 const userRole = new Role({
   name: 'user',
-  permissions: ['read', 'delete'],
+
 });
 
 // Guardar los roles en la base de datos
@@ -34,3 +31,4 @@ Promise.all([
 ])
 .then(() => console.log('Roles creados exitosamente'))
 .catch(err => console.error(err));
+

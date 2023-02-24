@@ -27,7 +27,8 @@ const userSchema = new Schema({
     },
     roleId: {
         type: mongoose.Schema.Types.ObjectId, ref: 'Role'
-    }
+    },
+    
 
 });
 

@@ -94,3 +94,5 @@ RacketsController.deleteRacket = async (req, res) => {
 
     }
 };
+
+module.exports = RacketsController;

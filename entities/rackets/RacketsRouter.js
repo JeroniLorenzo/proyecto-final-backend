@@ -11,4 +11,5 @@ router.post("/newRacket", isAdmin, RacketsController.newRacket);
 router.put("/updateRacket", isAdmin, RacketsController.updateRacket);
 router.delete("/deleteRacket", isAdmin,RacketsController.deleteRacket);
 
+
 module.exports = router;
