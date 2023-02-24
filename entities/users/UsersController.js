@@ -3,6 +3,8 @@ const bcrypt = require('bcrypt');
 const jsonwebtoken = require('jsonwebtoken');
 const {SECRET, EXPIRES, ROUNDS} = require('../../config/auth');
 const UsersController = {};
+const mongoose = require('mongoose');
+const Role = require('../roles/role');
 
 UsersController.getAllUsers = async (req, res) => {
 
@@ -22,6 +24,13 @@ UsersController.getAllUsers = async (req, res) => {
 };
 
 UsersController.newUser = async (req, res) => {
+     const role = req.body.role;
+
+      if (!mongoose.Types.ObjectId.isValid(role)) {
+          res.status(400);
+          res.json({error: 'invalid role'});
+          return;
+        }
 
     let password = bcrypt.hashSync(req.body.password, Number.parseInt(ROUNDS));
 
@@ -31,7 +40,7 @@ UsersController.newUser = async (req, res) => {
             name: req.body.name,
             surname: req.body.surname,
             email: req.body.email,
-            adress: req.body.adress,
+            address: req.body.address,
             password: password,
             phone: req.body.phone,
             roleId: req.body.roleId,
@@ -50,11 +59,17 @@ UsersController.newUser = async (req, res) => {
 
 UsersController.updateUser = async (req, res) => {
 
+    if (!mongoose.Types.ObjectId.isValid(Role)) {
+        res.status(400);
+        res.json({error: 'invalid role'});
+        return;
+      }
+
     let _id = req.body._id;
     let newName = req.body.name;
     let newSurname = req.body.surname;
     let newEmail = req.body.email;
-    let newAdress = req.body.adress;
+    let newAddress = req.body.address;
     let newPassword = req.body.password;
     let newPhone = req.body.phone;
     let newRoleId = req.body.roleId;
@@ -69,7 +84,7 @@ UsersController.updateUser = async (req, res) => {
                 name: newName,
                 surname: newSurname,
                 email: newEmail,
-                adress: newAdress,
+                address: newAddress,
                 password: newPassword,
                 phone: newPhone,
                 roleId: newRoleId,

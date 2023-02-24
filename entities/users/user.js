@@ -15,9 +15,8 @@ const userSchema = new Schema({
         unique: true,
         lowercase: true
     },
-    adress: {
+    address: {
         type: String,
-        required: true
     },
     password: {
         type: String,
@@ -26,8 +25,8 @@ const userSchema = new Schema({
     phone: {
         type: Number
     },
-    roleId:{
-        type: Schema.ObjectId, ref: "Role"
+    roleId: {
+        type: mongoose.Schema.Types.ObjectId, ref: 'Role'
     }
 
 });
