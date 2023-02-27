@@ -1,30 +1,18 @@
-// module.exports =  (req, res, next) => {
-//  console.log(req.user)
-//  console.log('holaaaaa')
-//     if(req.user && req.user.roleId == "63f8a04c149b47df5a1a861a"){
-//         next();
-//     }else {
-//         res.status(401).send(`Forbidden access`)
-//     }
-  
-// };
-
-
 const  User  = require('../entities/users/user');
 
 module.exports = (req, res, next) => {
 
-    let _id = req.body._id;
+    const email = req.body.email;
 
 
     User.find({
 
-         _id : _id 
+         email : email
 
-    }).then(foundUser => {
-
-        if(foundUser[0].roleId == "63f8a04c149b47df5a1a861a"){
-            console.log(foundUser[0])
+    }).then(user => {
+        
+        if(user[0].roleId == "63fce07fd7d5a2f9bc3257c2"){
+            
             next();
 
         }else {
