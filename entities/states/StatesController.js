@@ -1,16 +1,16 @@
-const Brand = require('./brand');
-const BrandsController = {};
+const State = require('./state');
+const StatesController = {};
 
-BrandsController.getAllBrands = async (req, res) => {
+StatesController.getAllStates = async (req, res) => {
 
     try {
 
-        let result = await Brand.find({});
+        let result = await State.find({});
 
         if (result.length > 0) {
             res.send(result)
         } else {
-            res.send({ "Message": "Sorry, any brand finded with this name." })
+            res.send({ "Message": "Sorry, any state finded." })
         }
 
     } catch (error) {
@@ -18,17 +18,17 @@ BrandsController.getAllBrands = async (req, res) => {
     }
 };
 
-BrandsController.newBrand = async (req, res) => {
+StatesController.newState = async (req, res) => {
 
     try {
 
-        let brand = await Brand.create({
+        let state = await State.create({
             name: req.body.name,        
             
         })
 
-        if (brand) {
-            res.send({ "Message": `Brand ${brand.name} has been successfuly added` })
+        if (state) {
+            res.send({ "Message": `State ${state.name} has been successfuly added` })
         }
 
     } catch (error) {
@@ -37,13 +37,13 @@ BrandsController.newBrand = async (req, res) => {
 
 };
 
-BrandsController.updateBrand = async (req, res) => {
+StatesController.updateState = async (req, res) => {
 
     let newName = req.body.name;   
 
 
     try {
-        let updated = await Brand.findOneAndUpdate(
+        let updated = await State.findOneAndUpdate(
 
             { _id: _id },
 
@@ -53,23 +53,23 @@ BrandsController.updateBrand = async (req, res) => {
             }).setOptions({ returnDocument: 'after' })
 
         if (updated) {
-            res.send(`Updated Brand successfuly`)
+            res.send(`Updated State successfuly`)
         }
     } catch (error) {
         res.json({error: error.message});
     }
 };
 
-BrandsController.deleteBrand = async (req, res) => {
+StatesController.deleteState = async (req, res) => {
     let _id = req.body._id;
 
     try {
-        let deleted = await Brand.findOneAndDelete({
+        let deleted = await State.findOneAndDelete({
             _id: _id
         })
 
         if (deleted) {
-            res.send({ "Message": `Brand ${deleted.name} has been removed successfuly` })
+            res.send({ "Message": `State ${deleted.name} has been removed successfuly` })
         }
     } catch (error) {
         res.json({error: error.message});
@@ -77,4 +77,4 @@ BrandsController.deleteBrand = async (req, res) => {
     }
 };
 
-module.exports = BrandsController;
+module.exports = StatesController;
