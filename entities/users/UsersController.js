@@ -110,28 +110,28 @@ UsersController.loginUser = async (req, res) => {
 
     try {
 
-        let userFound = await User.find({
+        let user = await User.find({
             email: req.body.email
         })
 
         
-        if (userFound) {
+        if (user) {
             
-            if (userFound[0].email === undefined) {
+            if (user[0].email === undefined) {
 
                 res.send("Incorrect pass");
             } else {
                
-                if (bcrypt.compareSync(req.body.password, userFound[0].password)) {
-                    console.log(userFound[0])
-                    let token = jsonwebtoken.sign( {id:userFound[0]._id, roleId:userFound[0].roleId } , SECRET, {
+                if (bcrypt.compareSync(req.body.password, user[0].password)) {
+                    console.log(user[0])
+                    let token = jsonwebtoken.sign( {id:user[0]._id, roleId:user[0].roleId } , SECRET, {
                         expiresIn: EXPIRES
                     });
 
-                    let loginOk = `Welcome back ${userFound[0].name}`;
+                    let loginOk = `Welcome back ${user[0].name}`;
                     res.json({
                         loginOk,
-                        user: userFound,
+                        user: user,
                         token: token
                     })
 
