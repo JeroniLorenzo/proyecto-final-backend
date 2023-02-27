@@ -19,7 +19,7 @@ module.exports = (req, res, next) => {
             res.send(`Forbidden access`)
         }
     }).catch(error => {
-        res.send(`Introduce a valid user id`, error)
+        res.send(`Introduce a valid user email`, error)
     })
 
 };
