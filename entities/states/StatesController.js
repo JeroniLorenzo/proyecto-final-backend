@@ -39,7 +39,7 @@ StatesController.newState = async (req, res) => {
 
 StatesController.updateState = async (req, res) => {
 
-    let newName = req.body.name;   
+    const newName = req.body.name;   
 
 
     try {
@@ -61,7 +61,7 @@ StatesController.updateState = async (req, res) => {
 };
 
 StatesController.deleteState = async (req, res) => {
-    let _id = req.body._id;
+    const _id = req.body._id;
 
     try {
         let deleted = await State.findOneAndDelete({

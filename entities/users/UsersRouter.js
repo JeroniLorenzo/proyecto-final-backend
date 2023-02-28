@@ -6,10 +6,10 @@ const isAdmin = require('../../middlewares/isAdmin');
 
 const UsersController = require('./UsersController')
 
-router.get('/getAll', isAdmin, UsersController.getAllUsers);
-router.post("/newUser", UsersController.newUser);
-router.put("/updateUser", isAdmin, UsersController.updateUser);
-router.delete("/deleteUser", isAdmin,UsersController.deleteUser);
+router.get('/', isAdmin, UsersController.getAllUsers);
+router.post("/", UsersController.newUser);
+router.put("/", isAdmin, UsersController.updateUser);
+router.delete("/", isAdmin, UsersController.deleteUser);
 router.post("/login", UsersController.loginUser);
 
 module.exports = router;
