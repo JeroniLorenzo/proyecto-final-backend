@@ -3,6 +3,7 @@ const express = require('express');
 const router = express.Router();
 
 const isAdmin = require('../../middlewares/isAdmin');
+const auth = require('../../middlewares/auth');
 
 const BrandsController = require('./BrandsController')
 
