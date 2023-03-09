@@ -32,7 +32,7 @@ RacketsController.newRacket = async (req, res) => {
             state: req.body.state,
             
         })
-
+        console.log(racket)
         if (racket) {
             res.send({ "Message": `Racket ${racket.brand} ${racket.model} has been successfuly added` })
         }

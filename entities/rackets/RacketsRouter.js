@@ -6,10 +6,10 @@ const isAdmin = require('../../middlewares/isAdmin');
 
 const RacketsController = require('./RacketsController')
 
-router.get('/getAll', RacketsController.getAllRackets);
-router.post("/newRacket", isAdmin, RacketsController.newRacket);
-router.put("/updateRacket", isAdmin, RacketsController.updateRacket);
-router.delete("/deleteRacket", isAdmin,RacketsController.deleteRacket);
+router.get('/', RacketsController.getAllRackets);
+router.post("/", isAdmin, RacketsController.newRacket);
+router.put("/", isAdmin, RacketsController.updateRacket);
+router.delete("/", isAdmin,RacketsController.deleteRacket);
 
 
 module.exports = router;

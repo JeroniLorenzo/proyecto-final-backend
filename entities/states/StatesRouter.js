@@ -6,10 +6,10 @@ const isAdmin = require('../../middlewares/isAdmin');
 
 const StatesController = require('./StatesController')
 
-router.get('/getAll', isAdmin, StatesController.getAllStates);
-router.post("/newState", isAdmin, StatesController.newState);
-router.put("/updateState", isAdmin, StatesController.updateState);
-router.delete("/deleteState", isAdmin, StatesController.deleteState);
+router.get('/', isAdmin, StatesController.getAllStates);
+router.post("/", isAdmin, StatesController.newState);
+router.put("/", isAdmin, StatesController.updateState);
+router.delete("/", isAdmin, StatesController.deleteState);
 
 
 module.exports = router;
