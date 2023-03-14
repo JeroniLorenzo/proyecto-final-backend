@@ -18,6 +18,23 @@ RacketsController.getAllRackets = async (req, res) => {
     }
 };
 
+RacketsController.getRacketByModel = async (req, res) => {
+
+    const model = req.params.model;
+
+    try {
+        const foundRackets = await Racket.find({ "model": { "$regex": model, "$options": "i" } });
+        if (!foundRackets.length) {
+            res.status(404);
+            res.json({ error: 'This racket is not in our data base' });
+            return;
+        }
+        res.send(foundRackets);
+    } catch (error) {
+        console.log(error);
+    }
+};
+
 RacketsController.newRacket = async (req, res) => {
 
     try {
