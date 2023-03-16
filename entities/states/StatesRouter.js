@@ -3,13 +3,14 @@ const express = require('express');
 const router = express.Router();
 
 const isAdmin = require('../../middlewares/isAdmin');
+const auth = require('../../middlewares/auth');
 
 const StatesController = require('./StatesController')
 
 router.get('/', isAdmin, StatesController.getAllStates);
-router.post("/", isAdmin, StatesController.newState);
-router.put("/", isAdmin, StatesController.updateState);
-router.delete("/", isAdmin, StatesController.deleteState);
+router.post("/", auth, isAdmin, StatesController.newState);
+router.put("/", auth, isAdmin, StatesController.updateState);
+router.delete("/", auth, isAdmin, StatesController.deleteState);
 
 
 module.exports = router;

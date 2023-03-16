@@ -37,11 +37,11 @@ SalesController.newSale = async (req, res) => {
 
         if (sale) {
 
-            res.send( {"Message": `La venta ha sido un éxito`});
+            res.send( `Gracias por su compra`);
 
         }else {
 
-            res.send({ "Message": `Ha habido un error en la venta` });
+            res.send(`Ha habido un error en la venta`);
 
         }
 
