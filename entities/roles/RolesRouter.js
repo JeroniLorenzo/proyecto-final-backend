@@ -7,7 +7,7 @@ const auth = require('../../middlewares/auth');
 
 const RolesController = require('./RolesController');
 
-router.get('/', isAdmin, RolesController.getAllRoles);
+router.get('/', auth, isAdmin, RolesController.getAllRoles);
 router.post("/", auth, isAdmin, RolesController.newRole);
 router.put("/", auth, isAdmin, RolesController.updateRole);
 router.delete("/", auth, isAdmin, RolesController.deleteRole);

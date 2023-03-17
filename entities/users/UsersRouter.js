@@ -7,7 +7,7 @@ const auth = require('../../middlewares/auth');
 
 const UsersController = require('./UsersController')
 
-router.get('/', isAdmin, UsersController.getAllUsers);
+router.get('/', auth, isAdmin, UsersController.getAllUsers);
 router.post("/", UsersController.newUser);
 router.put("/", auth, isAdmin, UsersController.updateUser);
 router.delete("/", auth, isAdmin, UsersController.deleteUser);

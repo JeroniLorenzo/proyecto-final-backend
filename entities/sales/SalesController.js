@@ -4,6 +4,7 @@ const SalesController = {};
 
 
 SalesController.getAllSales = async (req, res) => {
+    
 
     try {
 

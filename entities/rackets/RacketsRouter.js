@@ -8,7 +8,7 @@ const auth = require('../../middlewares/auth');
 const RacketsController = require('./RacketsController')
 
 router.get('/', RacketsController.getAllRackets);
-router.get("/model/:model",  RacketsController.getRacketByModel);
+router.get("/model/:model", RacketsController.getRacketByModel);
 router.post("/", auth, isAdmin, RacketsController.newRacket);
 router.put("/", auth, isAdmin, RacketsController.updateRacket);
 router.delete("/", auth, isAdmin,RacketsController.deleteRacket);
