@@ -93,12 +93,8 @@ UsersController.deleteUser = async (req, res) => {
     const email = req.body.email
     const _id = req.body._id
     try {
-        // Find the user with the given _id
         const user = await User.findOne({email});
-      
-        // Check if the user is an admin and is not trying to delete themselves
-        if (user.roleId == '63fce07fd7d5a2f9bc3257c2') {
-          // If the user is an admin and is not trying to delete themselves, proceed with the deletion
+
           const deletedUser = await User.findByIdAndDelete(_id);
       
           if (deletedUser) {
@@ -106,10 +102,7 @@ UsersController.deleteUser = async (req, res) => {
           } else {
             res.status(404).send({ error: `User with ID ${_id} not found` });
           }
-        } else {
-          // If the user is trying to delete themselves or is not an admin, send an error message
-          res.status(401).send({ error: "You do not have permission to perform this action" });
-        }
+
       } catch (error) {
         res.status(500).send({ error: error.message });
       }

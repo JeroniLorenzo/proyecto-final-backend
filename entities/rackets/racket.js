@@ -20,10 +20,12 @@ const racketSchema = new Schema({
         type: String
     },
     brand:{
-        type: Schema.ObjectId, ref: "Brand"
+        type: Schema.ObjectId,
+        ref: "Brand"
     },
     state:{
-        type: Schema.ObjectId, ref: "State"
+        type: Schema.ObjectId,
+        ref: "State"
     }
 
 });
