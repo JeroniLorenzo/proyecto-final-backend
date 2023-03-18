@@ -125,7 +125,6 @@ UsersController.loginUser = async (req, res) => {
             } else {
                
                 if (bcrypt.compareSync(req.body.password, user[0].password)) {
-                    console.log(user[0])
                     let token = jsonwebtoken.sign( {id:user[0]._id, roleId:user[0].roleId } , SECRET, {
                         expiresIn: EXPIRES
                     });

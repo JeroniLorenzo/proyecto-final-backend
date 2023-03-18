@@ -1,4 +1,4 @@
-# Backend proyecto e-commcerce
+# Backend proyecto e-commerce
 
 ### En este proyecto he hecho una API y he creado una base de datos en Atlas para hacer una tienda on-line de palas de pádel.
 
@@ -14,9 +14,13 @@
 - Roles.
 - Estados de la pala.
 
+
 ## Middleares.
+
 - auth. Servirá para que usuarios registrados y admin puedan usar la app. Ya sea para hacer compras o gestiones por parte del admin.
 - isAdmin. Tendrá control total sobre la app y sus colecciones. Podrá borrar, actualizar y crear ya sea palas, marcas etc.
+
+
 ## Endpoints.
 
 #### Usuarios.
@@ -53,7 +57,6 @@ Aqui el admin podría actualizar los datos de la pala.
 - router.delete("/", auth, isAdmin,RacketsController.deleteRacket);
 Endpoint para borrar palas. El admin tras logearse y poner el token, pasando por body en formato JSON el id de la pala a borrar, ésta se borrará.
 
-
 #### Ventas.
 
 - router.get("/getAll", auth, isAdmin, SalesController.getAllSales);
@@ -64,7 +67,6 @@ En éste, el usuario podrá ser capaz de ver sus compras en la app. (tendrá que
 
 - router.post("/newSale", auth,  SalesController.newSale);
 En este, un usuario  registrado podrá registrar una venta. Por body se van a pasar el id del usuario, el id de la pala comprada, la fecha y el precio de dicha pala.
-
 
 #### Marcas. 
 
@@ -80,7 +82,6 @@ En este, el admin tras logearse y poner el token podrá actualizar los datos de 
 router.delete("/", auth, isAdmin, BrandsController.deleteBrand);
 En este, el admin tras logearse y poner el token podrá borrar marcas. Por body se pasara el id de la marca a borrar.
 
-
 #### Estados de la pala.
 
 - router.get('/', auth, isAdmin, StatesController.getAllStates);
@@ -94,7 +95,6 @@ En este, el admin tras logearse y poner el token podrá actualizar los datos del
 
 - router.delete("/", auth, isAdmin, StatesController.deleteState);
 En este, el admin tras logearse y poner el token podrá borrar estados. Por body se pasara el id del estado a borrar.
-
 
 #### Roles.
 
