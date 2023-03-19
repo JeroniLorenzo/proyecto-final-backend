@@ -6,6 +6,7 @@
 
 Javascript, MongoDB con Mongoose
 
+![Captura de pantalla 2023-03-18 233340](https://user-images.githubusercontent.com/112971504/226147575-f98bc83d-9065-4c4f-b86f-fb8439c5a9c9.png)
 
 ## Colecciones.
 
