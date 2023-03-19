@@ -27,19 +27,29 @@
 #### Usuarios.
 
 - router.get('/', auth, isAdmin, UsersController.getAllUsers);
+
 En este endpoint, el admin,  al logearse primero y acceder con el token podrá ver todos los usuarios registrados en la app.
 
+
 - router.post("/", UsersController.newUser);
+
 Este es el endpoint para poder registrarse a la app. Se van a pedir por body los campos referentes al modelo de users.
 
+
 - router.put("/", auth, isAdmin, UsersController.updateUser);
+
 En este endpoint el admin podría actualizar datos de los usuarios registrados. Se va a mandar un JSON del id del usuario a modificar junto con los datos del usuario ya modificados.
 
+
 - router.delete("/", auth, isAdmin, UsersController.deleteUser);
+
 Este endpoint sirve para borrar ususarios. Aquí el admin tras poner el token podrá borrar usuarios tras poner el id (por body) del usuario a borrar.
 
+
 - router.post("/login", UsersController.loginUser);
+
 En éste endpoint por body vamos a pedir el email y la contraseña del usuario para poder logearnos a la app.
+
 
 #### Palas.
 
