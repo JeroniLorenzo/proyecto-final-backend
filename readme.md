@@ -77,10 +77,10 @@ En este endpoint, el admin, al logearse y poner el token podrá ver todas las ma
 - router.post("/", auth, isAdmin, BrandsController.newBrand);
 En este, el admin tras logearse y poner el token podrá añadir nuevas marcas a la app. Por body se pasaran los datos de la marca a crear.
 
-router.put("/", auth, isAdmin, BrandsController.updateBrand);
+- router.put("/", auth, isAdmin, BrandsController.updateBrand);
 En este, el admin tras logearse y poner el token podrá actualizar los datos de la marca. Por body se pasaran los datos de la marca a actualizar.
 
-router.delete("/", auth, isAdmin, BrandsController.deleteBrand);
+- router.delete("/", auth, isAdmin, BrandsController.deleteBrand);
 En este, el admin tras logearse y poner el token podrá borrar marcas. Por body se pasara el id de la marca a borrar.
 
 #### Estados de la pala.
