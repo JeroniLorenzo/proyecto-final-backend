@@ -4,6 +4,8 @@
 
 ## Tecnologías y Lenguajes
 
+Javascript, MongoDB con Mongoose
+
 
 ## Colecciones.
 
