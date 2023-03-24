@@ -24,11 +24,11 @@ RacketsController.getAllRackets = async (req, res) => {
 RacketsController.getRacketByModel = async (req, res) => {
 
     const model = req.params.model;
-    const brandName = req.params.brand;
-    const stateName = req.params.state;
+    // const brandName = req.params.brand;
+    // const stateName = req.params.state;
 
     try {
-        const foundRackets = await Racket.find({ "model": { "$regex": model, "$options": "i" } });
+        const foundRackets = await Racket.find({'model':{'$regex': model, '$options': 'i'}});
         if (!foundRackets.length) {
             res.status(404);
             res.json({ error: 'This racket is not in our data base' });
@@ -39,17 +39,17 @@ RacketsController.getRacketByModel = async (req, res) => {
         console.log(error);
     }
 
-    try {
-        const foundBrands = await Brand.find({ "name": { "$regex": brandName, "$options": "i" } });
-        if (!foundBrands.length) {
-            res.status(404);
-            res.json({ error: 'This brand is not in our data base' });
-            return;
-        }
-        res.send(foundBrands);
-    } catch (error) {
-        console.log(error);
-    }
+    // try {
+    //     const foundBrands = await Brand.find({ "name": { "$regex": brandName, "$options": "i" } });
+    //     if (!foundBrands.length) {
+    //         res.status(404);
+    //         res.json({ error: 'This brand is not in our data base' });
+    //         return;
+    //     }
+    //     res.send(foundBrands);
+    // } catch (error) {
+    //     console.log(error);
+    // }
 };
 
 RacketsController.newRacket = async (req, res) => {
